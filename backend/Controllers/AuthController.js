@@ -13,9 +13,15 @@ const signup = async(req,res) => {
         await userModel.save();
         res.status(201)
         .json({
-            message
+            message: "Signup successfully",
+            success: true
         })
-    }catch{
-
+    }catch(error){\
+        res.status(500)
+        .json({
+            message: "Internal server error",
+            success:false
+        })
     }
 }
+module.exports = { signup}
